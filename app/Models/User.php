@@ -24,4 +24,13 @@ class User extends Authenticatable
         return '../img/users/user.png';
     }
 
+    public function setCreatedAt($value)
+    {
+        return null;
+    }
+
+    public function setUpdatedAt($value)
+    {
+        return null;
+    }
 }
