@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public function adminlte_image()
     {
-        return '../img/users/user.png';
+        return 'img/users/user.png';
     }
 
     public function setCreatedAt($value)
