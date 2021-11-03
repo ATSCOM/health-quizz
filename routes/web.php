@@ -3,15 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CategoryController;
 
-
-Route::get('/', function () {
-    return view('home');
+//sign in with nickname
+Route::get('/', function(){
+    return view('start');
 });
-Route::get('home', function () {
-    return view('home');
-});
-//user
+//Window of home
+Route::get('/home', [QuestionController::class, 'index']);
+//for users
 Route::get('/register', [RegisterController::class, 'create'])
     ->name('register.index'
 );

@@ -12,30 +12,20 @@
 
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Login to the site</p>
+                <p class="login-box-msg">Enter your nickname</p>
                 <form method="POST" action="">
                     @csrf
-                    @error('message')
-                        <x-adminlte-alert theme="danger" class="text-uppercase" icon="fas fa-lg fa-exclamation-circle" title="{{ $message }}">
-                        </x-adminlte-alert>
-                    @enderror
                     <div class="input-group mb-3">
-                        <input type="text" id="username" name="username" class="form-control" placeholder="username">
+                        <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Nickname">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-2">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="password">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" id="button" name="button" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" id="button" name="button" class="btn btn-primary btn-block">submit</button>
                         </div>
                     </div>
                 </form>
