@@ -10,7 +10,7 @@ class Category extends Model
   use HasFactory;
 
   protected $fillable = ['description'];
-  protected $timestemap = false;
+  public $timestamps = false;
 
   public function question(){
     return $this->hasMany(Question::class);

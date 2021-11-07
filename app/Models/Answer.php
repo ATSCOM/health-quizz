@@ -10,7 +10,7 @@ class Answer extends Model
     use HasFactory;
 
     protected $fillable = ['description', 'value'];
-    protected $timestemap = false;
+    public $timestamps = false;
 
     public function question(){
       return $this->belongsToMany(Question::class);

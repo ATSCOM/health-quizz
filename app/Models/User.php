@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    public $timestamps = false;
     protected $fillable = ['username', 'password'];
 
     public function setPasswordAttribute($password)
@@ -22,13 +22,4 @@ class User extends Authenticatable
         return 'img/users/user.png';
     }
 
-    public function setCreatedAt($value)
-    {
-        return null;
-    }
-
-    public function setUpdatedAt($value)
-    {
-        return null;
-    }
 }

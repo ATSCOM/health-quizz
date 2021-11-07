@@ -10,7 +10,7 @@ class Question extends Model
   use HasFactory;
 
   protected $fillable = ['description', 'justify'];
-  protected $timestemap = false;
+  public $timestamps = false;
 
   public function category(){
     return $this->belongsToMany(Category::class);
