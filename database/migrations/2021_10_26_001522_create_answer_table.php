@@ -13,12 +13,11 @@ class CreateAnswerTable extends Migration
      */
     public function up()
     {
-        Schema::create('answer', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('answers', function (Blueprint $table) {
+            $table->id();
             $table->string('description');
             $table->char('value');
-            $table->unsignedInteger('id_question');
-            $table->foreign('id_question')->references('id')->on('question')->onDelete('cascade');
+            $table->foreignId('question_id')->constrained('questions')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +28,8 @@ class CreateAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers', function(Blueprint $table) {
+          $table->dropForeign('id_question');
+        });
     }
 }
