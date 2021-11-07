@@ -9,18 +9,11 @@ class Answer extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $table = 'answer';
     protected $fillable = ['description', 'value'];
+    protected $timestemap = false;
 
-    public function setCreatedAt($value)
-    {
-        return null;
-    }
-
-    public function setUpdatedAt($value)
-    {
-        return null;
+    public function question(){
+      return $this->belongsToMany(Question::class);
     }
 
 }

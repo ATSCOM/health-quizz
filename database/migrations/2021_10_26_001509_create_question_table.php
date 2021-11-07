@@ -13,12 +13,11 @@ class CreateQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('question', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('questions', function (Blueprint $table) {
+            $table->id();
             $table->string('descriptions');
             $table->string('justify');
-            $table->unsignedInteger('id_category');
-            $table->foreign('id_category')->references('id')->on('category')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
         });
     }
 
@@ -29,6 +28,8 @@ class CreateQuestionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question');
+        Schema::dropIfExists('questions', function(Blueprint $table) {
+          $table->dropForeign('id_category');
+        });
     }
 }

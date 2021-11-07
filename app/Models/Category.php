@@ -7,20 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $table = 'category';
-    protected $fillable = ['description'];
+  protected $fillable = ['description'];
+  protected $timestemap = false;
 
-    public function setCreatedAt($value)
-    {
-        return null;
-    }
-
-    public function setUpdatedAt($value)
-    {
-        return null;
-    }
-
+  public function question(){
+    return $this->hasMany(Question::class);
+  }
 }

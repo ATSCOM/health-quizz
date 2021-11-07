@@ -10,8 +10,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $guarded = ['id'];
-    protected $table = 'user';
     protected $fillable = ['username', 'password'];
 
     public function setPasswordAttribute($password)
