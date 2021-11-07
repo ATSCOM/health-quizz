@@ -9,11 +9,18 @@ class Answer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['description', 'value'];
+    static $rules = [
+		'description' => 'required',
+		'value' => 'required',
+		'question_id' => 'required',
+    ];
+
+    protected $fillable = ['description','value','question_id'];
     public $timestamps = false;
 
-    public function question(){
-      return $this->belongsToMany(Question::class);
+    public function question()
+    {
+        return $this->hasOne('App\Models\Question', 'id', 'question_id');
     }
 
 }

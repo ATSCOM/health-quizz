@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $fillable = ['description'];
-  public $timestamps = false;
+    static $rules = [
+		'description' => 'required',
+    ];
 
-  public function question(){
-    return $this->hasMany(Question::class);
-  }
+    protected $fillable = ['description'];
+    public $timestamps = false;
+
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question', 'category_id', 'id');
+    }
 }

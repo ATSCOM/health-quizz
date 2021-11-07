@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
         /* alguna vista para el admin o user logeado */
-        return redirect('/');
+        return redirect('/home');
 
     }
 

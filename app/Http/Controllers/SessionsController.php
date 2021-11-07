@@ -42,7 +42,7 @@ class SessionsController extends Controller
                 'message' => 'The username or password is incorrect, please try again'
             ]);
         }
-        return redirect()->to('/');
+        return redirect()->to('/home');
     }
 
     /**
