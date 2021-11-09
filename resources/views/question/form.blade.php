@@ -1,6 +1,6 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
             {{ Form::label('descriptions') }}
             {{ Form::text('descriptions', $question->descriptions, ['class' => 'form-control' . ($errors->has('descriptions') ? ' is-invalid' : ''), 'placeholder' => 'Descriptions']) }}
@@ -12,8 +12,8 @@
             {!! $errors->first('justify', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('category_id') }}
-            {{ Form::text('category_id', $question->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Category Id']) }}
+            {{ Form::label('category') }}
+            {{ Form::select('category_id', $categories, null,['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('category_id', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

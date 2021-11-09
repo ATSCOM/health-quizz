@@ -38,7 +38,7 @@
 
 										<th>Descriptions</th>
 										<th>Justify</th>
-										<th>Category Id</th>
+										<th>Category</th>
 
                                         <th></th>
                                     </tr>

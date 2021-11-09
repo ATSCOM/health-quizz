@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,7 @@ class QuestionController extends Controller
 {
 
     public function indexHome(){
-        $questions = \DB::table('questions')
-            ->join('categories', 'categories.id', '=', 'questions.id')
-            ->select('questions.*', 'categories.description')
-            ->get();
+        $questions = Question::paginate();
         return view('home', compact('questions'));
     }
    /**
@@ -39,7 +37,8 @@ class QuestionController extends Controller
     public function create()
     {
         $question = new Question();
-        return view('question.create', compact('question'));
+        $categories = Category::pluck('description', 'id');
+        return view('question.create', compact('question','categories'));
     }
 
     /**
@@ -80,8 +79,8 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-
-        return view('question.edit', compact('question'));
+        $categories = Category::pluck('description', 'id');
+        return view('question.edit', compact('question', 'categories'));
     }
 
     /**

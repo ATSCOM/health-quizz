@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Descriptions:</strong>
                             {{ $question->descriptions }}
@@ -29,8 +29,8 @@
                             {{ $question->justify }}
                         </div>
                         <div class="form-group">
-                            <strong>Category Id:</strong>
-                            {{ $question->category_id }}
+                            <strong>Category:</strong>
+                            {{ $question->category->description }}
                         </div>
 
                     </div>
