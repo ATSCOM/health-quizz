@@ -113,4 +113,8 @@ class QuestionController extends Controller
             ->with('success', 'Question deleted successfully');
     }
 
+    public static function view(){
+      
+    }
+
 }

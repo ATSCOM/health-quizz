@@ -23,6 +23,14 @@ class CategoryController extends Controller
         return view('category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
+    
+    /**
+    * Return view of 'question' in principal page with a message of greet
+    */
+    public function quizz($id){
+      $questions = Category::find($id);
+      return view('quizz', ['categoria' => $questions['description']]);
+    }
 
     /**
      * Show the form for creating a new resource.
