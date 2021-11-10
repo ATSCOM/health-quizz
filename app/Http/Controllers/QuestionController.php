@@ -16,4 +16,8 @@ class QuestionController extends Controller
         return view('home', compact('questions'));
     }
 
+    public static function view(){
+      
+    }
+
 }

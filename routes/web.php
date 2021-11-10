@@ -13,6 +13,9 @@ Route::get('/', function(){
 //Window of home
 Route::get('/home', [QuestionController::class, 'index']);
 //for users
+
+Route::get('quizz/{id}', [CategoryController::class, 'find']);
+
 Route::get('/register', [RegisterController::class, 'create'])
     ->name('register.index'
 );
@@ -28,3 +31,7 @@ Route::post('/login', [SessionsController::class, 'store'])
 Route::post('/logout', [SessionsController::class, 'logout'])
     ->name('login.logout'
 );
+
+Route::post('/', function(){
+  return view('home');
+});
