@@ -11,11 +11,11 @@ use App\Http\Controllers\AnswerController;
 Route::get('/', function(){
     return view('start');
 });
-Route::post('/', [QuestionController::class, 'indexHome']);
+Route::post('/', [CategoryController::class, 'indexHome']);
 //Window of home
 Route::get('home', [QuestionController::class, 'indexHome']);
 //for users
-Route::get('quizz/{id}', [CategoryController::class, 'find']);
+Route::get('category/{id}', [QuestionController::class, 'indexHome']);
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
 Route::get('login', [SessionsController::class, 'create']);

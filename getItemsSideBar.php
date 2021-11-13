@@ -10,7 +10,7 @@ if(isset($request)){
   foreach($data as $key){
     $ejemplo = [
       'text' => $key['description'],
-      'url'  => 'quizz/'.$key['id'],
+      'url'  => 'category/'.$key['id'],
       'icon' => 'fas fa-chart-area',
     ];
     array_push($items, $ejemplo);
