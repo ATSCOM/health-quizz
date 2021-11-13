@@ -1,5 +1,5 @@
 <?php
-$uri = 'http://laravel/health/getItemsSideBar.php?items=1';
+$uri = 'http://localhost/health/getItemsSideBar.php?items=1';
 $categories = json_decode(file_get_contents($uri), true);
 $items = [
   // Navbar items:
