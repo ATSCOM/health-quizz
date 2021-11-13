@@ -1,8 +1,13 @@
 <?php
 $request = $_REQUEST['items'];
 if(isset($request)){
-  $pdo = new PDO('mysql:host=localhost;dbname=health', 'jl', '911');
-  $stmt = $pdo->prepare('SELECT * FROM categories');
+  $host = 'localhost';
+  $user = 'yxd';
+  $password = 'AmHt2018Ab.';
+  $dbName = 'health';
+  $table = 'quizzes';
+  $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
+  $stmt = $pdo->prepare("SELECT * FROM $table");
   $stmt->execute();
   $data = $stmt->fetchAll();
 
