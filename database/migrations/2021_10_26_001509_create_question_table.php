@@ -17,7 +17,7 @@ class CreateQuestionTable extends Migration
             $table->id();
             $table->string('descriptions');
             $table->string('justify');
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('quiz_id')->constrained('quizzes')->cascadeOnDelete();
         });
     }
 
@@ -29,7 +29,7 @@ class CreateQuestionTable extends Migration
     public function down()
     {
         Schema::dropIfExists('questions', function(Blueprint $table) {
-          $table->dropForeign('id_category');
+          $table->dropForeign('quiz_id');
         });
     }
 }

@@ -12,10 +12,10 @@ class Question extends Model
     static $rules = [
 		'descriptions' => 'required',
 		'justify' => 'required',
-		'category_id' => 'required',
+		'quiz_id' => 'required',
     ];
 
-    protected $fillable = ['descriptions','justify','category_id'];
+    protected $fillable = ['descriptions','justify','quiz_id'];
     public $timestamps = false;
 
      /**
@@ -31,7 +31,7 @@ class Question extends Model
      */
     public function category()
     {
-        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+        return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
     }
 
 }

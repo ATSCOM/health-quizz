@@ -10,9 +10,8 @@ class Quiz extends Model
     use HasFactory;
 
     static $rules = [
-		'title' => 'required',
+		'description' => 'required',
 		'category_id' => 'required',
-		'question_id' => 'required',
     ];
 
     protected $perPage = 20;
@@ -22,7 +21,7 @@ class Quiz extends Model
      *
      * @var array
      */
-    protected $fillable = ['title','category_id','question_id'];
+    protected $fillable = ['description','category_id'];
 
 
     /**
@@ -31,14 +30,6 @@ class Quiz extends Model
     public function category()
     {
         return $this->hasOne('App\Category', 'id', 'category_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function question()
-    {
-        return $this->hasOne('App\Question', 'id', 'question_id');
     }
 
 }
