@@ -9,6 +9,8 @@ class Quiz extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     static $rules = [
 		'description' => 'required',
 		'category_id' => 'required',
@@ -29,7 +31,15 @@ class Quiz extends Model
      */
     public function category()
     {
-        return $this->hasOne('App\Category', 'id', 'category_id');
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question', 'quiz_id', 'id');
     }
 
 }

@@ -9,15 +9,27 @@ class Answer extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     static $rules = [
 		'description' => 'required',
 		'value' => 'required',
 		'question_id' => 'required',
     ];
 
-    protected $fillable = ['description','value','question_id'];
-    public $timestamps = false;
+    protected $perPage = 20;
 
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['description','value','question_id'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function question()
     {
         return $this->hasOne('App\Models\Question', 'id', 'question_id');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class QuizController extends Controller
     public function create()
     {
         $quiz = new Quiz();
-        return view('quiz.create', compact('quiz'));
+        $categories = Category::pluck('description', 'id');
+        return view('quiz.create', compact('quiz', 'categories'));
     }
 
     /**
@@ -73,8 +75,8 @@ class QuizController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::find($id);
-
-        return view('quiz.edit', compact('quiz'));
+        $categories = Category::pluck('description', 'id');
+        return view('quiz.edit', compact('quiz', 'categories'));
     }
 
     /**

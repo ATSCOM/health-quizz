@@ -7,17 +7,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
     use HasFactory;
+
+    public $timestamps = false;
 
     static $rules = [
 		'description' => 'required',
     ];
 
-    protected $fillable = ['description'];
-    public $timestamps = false;
+    protected $perPage = 20;
 
-    public function questions()
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['description'];
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quizzes()
     {
-        return $this->hasMany('App\Models\Question', 'category_id', 'id');
+        return $this->hasMany('App\Models\Quiz', 'category_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function resources()
+    {
+        return $this->hasMany('App\Models\Resource', 'category_id', 'id');
     }
 }

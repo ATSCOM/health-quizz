@@ -1,5 +1,5 @@
 <?php
-$uri = 'http://laravel/health/getItemsSideBar.php?items=1';
+$uri = 'http://localhost/health/getItemsSideBar.php?items=1';
 $categories = json_decode(file_get_contents($uri), true);
 $items = [
   // Navbar items:
@@ -26,7 +26,7 @@ $dataReturn = [
     |
     */
 
-  'title' => 'AdminLTE 3',
+  'title' => 'Health',
   'title_prefix' => '',
   'title_postfix' => '',
 

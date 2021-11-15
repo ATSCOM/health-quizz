@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Question
+    Quiz
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Question') }}
+                                {{ __('Quiz') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('questions.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('quizzes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,26 +36,24 @@
                                     <tr>
                                         <th>No</th>
 
-										<th>Descriptions</th>
-										<th>Justify</th>
-										<th>Quiz</th>
+										<th>Description</th>
+										<th>Category</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($questions as $question)
+                                    @foreach ($quizzes as $quiz)
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $question->descriptions }}</td>
-											<td>{{ $question->justify }}</td>
-											<td>{{ $question->quiz->description }}</td>
+											<td>{{ $quiz->description }}</td>
+											<td>{{ $quiz->category->description }}</td>
 
                                             <td>
-                                                <form action="{{ route('questions.destroy',$question->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('questions.show',$question->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('questions.edit',$question->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('quizzes.destroy',$quiz->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('quizzes.show',$quiz->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('quizzes.edit',$quiz->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -68,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $questions->links() !!}
+                {!! $quizzes->links() !!}
             </div>
         </div>
     </div>

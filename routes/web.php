@@ -6,6 +6,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuizController;
 
 //sign in with nickname
 Route::get('/', function(){
@@ -27,3 +28,5 @@ Route::resource('categories', CategoryController::class);
 Route::resource('questions', QuestionController::class);
 //Answers
 Route::resource('answers', AnswerController::class);
+//Quizzes
+Route::resource('quizzes', QuizController::class);

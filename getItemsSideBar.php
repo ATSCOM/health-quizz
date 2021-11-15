@@ -2,8 +2,8 @@
 $request = $_REQUEST['items'];
 if(isset($request)){
   $host = 'localhost';
-  $user = 'yxd';
-  $password = 'AmHt2018Ab.';
+  $user = 'jl';
+  $password = '911';
   $dbName = 'health';
   $table = 'quizzes';
   $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);

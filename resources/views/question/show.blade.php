@@ -29,8 +29,8 @@
                             {{ $question->justify }}
                         </div>
                         <div class="form-group">
-                            <strong>Category:</strong>
-                            {{ $question->category->description }}
+                            <strong>Quiz:</strong>
+                            {{ $question->quiz->description }}
                         </div>
 
                     </div>

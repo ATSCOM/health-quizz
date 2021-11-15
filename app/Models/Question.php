@@ -9,21 +9,38 @@ class Question extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     static $rules = [
 		'descriptions' => 'required',
 		'justify' => 'required',
 		'quiz_id' => 'required',
     ];
 
-    protected $fillable = ['descriptions','justify','quiz_id'];
-    public $timestamps = false;
+    protected $perPage = 20;
 
-     /**
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['descriptions','justify','quiz_id'];
+
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function quizzes()
+    public function answers()
     {
-        return $this->hasMany('App\Models\Quiz', 'quiz_id', 'id');
+        return $this->hasMany('App\Models\Answer', 'question_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function quiz()
+    {
+        return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
     }
 
 }

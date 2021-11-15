@@ -33,9 +33,8 @@ class AnswerController extends Controller
     public function create()
     {
         $answer = new Answer();
-
-        return view('answer.create')
-            ->with('answer', $answer);
+        $questions = Question::pluck('descriptions', 'id');
+        return view('answer.create', compact('answer', 'questions'));
     }
 
     /**
@@ -76,9 +75,8 @@ class AnswerController extends Controller
     public function edit($id)
     {
         $answer = Answer::find($id);
-        $question = Question::all();
-        return view('answer.edit')
-            ->with('answer', $answer);
+        $questions = Question::pluck('descriptions', 'id');
+        return view('answer.edit', compact('answer', 'questions'));
     }
 
     /**

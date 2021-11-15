@@ -9,6 +9,8 @@ class Resource extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     static $rules = [
 		'route' => 'required',
 		'category_id' => 'required',
