@@ -15,7 +15,7 @@ class CreateQuizzesTable extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->text('description');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
         });
     }
