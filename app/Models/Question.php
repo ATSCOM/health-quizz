@@ -21,17 +21,9 @@ class Question extends Model
      /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function answers()
+    public function quizzes()
     {
-        return $this->hasMany('App\Models\Answer', 'question_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function category()
-    {
-        return $this->hasOne('App\Models\Quiz', 'id', 'quiz_id');
+        return $this->hasMany('App\Models\Quiz', 'quiz_id', 'id');
     }
 
 }
