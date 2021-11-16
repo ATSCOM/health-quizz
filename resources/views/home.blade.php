@@ -5,8 +5,8 @@
 @section('content')
     @csrf
     @if(!Auth::user())
-        @foreach ($questions as $question)
-            <h5 class="font-weight-bold">{{ $question->category->description }}</h5>
+        @foreach ($values as $val)
+            <h5 class="font-weight-bold">{{ $val }}</h5>
             <div class="card-group">
                 @include('layouts.suggestion')
             </div>

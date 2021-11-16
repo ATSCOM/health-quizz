@@ -12,11 +12,11 @@ use App\Http\Controllers\QuizController;
 Route::get('/', function(){
     return view('start');
 });
-Route::post('/', [CategoryController::class, 'indexHome']);
+Route::post('/', [QuizController::class, 'showHome']);
 //Window of home
-Route::get('home', [QuestionController::class, 'indexHome']);
+Route::get('home', [QuizController::class, 'showHome']);
 //for users
-Route::get('category/{id}', [QuestionController::class, 'indexHome']);
+//Route::get('category/{id}', [QuestionController::class, 'indexHome']);
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
 Route::get('login', [SessionsController::class, 'create']);
@@ -30,3 +30,6 @@ Route::resource('questions', QuestionController::class);
 Route::resource('answers', AnswerController::class);
 //Quizzes
 Route::resource('quizzes', QuizController::class);
+Route::get('quizz/{id}', function () {
+    return view('quizz');
+});

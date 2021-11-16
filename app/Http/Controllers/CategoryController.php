@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Quiz;
 use Illuminate\Http\Request;
 
 /**
@@ -23,7 +24,7 @@ class CategoryController extends Controller
         return view('category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
     }
-    
+
     /**
     * Return view of 'question' in principal page with a message of greet
     */
@@ -68,8 +69,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
+        $quizzes = Quiz::where('category_id', '=', $category->id)->paginate();
 
-        return view('category.show', compact('category'));
+        return view('category.show', compact('category', 'quizzes'));
     }
 
     /**

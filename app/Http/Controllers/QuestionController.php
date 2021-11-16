@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
 
-  public function indexHome($id)
+  public function indexHome()
   {
-    $questions = Question::where('category_id', '=', $id)->paginate();
+    $questions = Question::paginate();
     return view('home', compact('questions'));
   }
   /**

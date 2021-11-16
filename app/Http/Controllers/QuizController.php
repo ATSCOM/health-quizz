@@ -66,6 +66,18 @@ class QuizController extends Controller
         return view('quiz.show', compact('quiz'));
     }
 
+    public function showHome()
+    {
+        $quizzes = Quiz::paginate();
+        //almacenamos en una variable los nombres de las categorias
+        foreach ($quizzes as $quiz) {
+            $def[] = $quiz->category->description;
+        }
+        //quitamos valores repetidos
+        $values = array_unique($def);
+        return view('home', compact('quizzes', 'values'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
