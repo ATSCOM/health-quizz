@@ -70,6 +70,7 @@ class QuizController extends Controller
     {
         $quizzes = Quiz::paginate();
         //almacenamos en una variable los nombres de las categorias
+        $def = array();
         foreach ($quizzes as $quiz) {
             $def[] = $quiz->category->description;
         }

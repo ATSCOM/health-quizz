@@ -2,8 +2,8 @@
 $request = $_REQUEST['items'];
 if(isset($request)){
   $host = 'localhost';
-  $user = 'jl';
-  $password = '911';
+  $user = 'yxd';
+  $password = 'AmHt2018Ab.';
   $dbName = 'health';
   $table = 'categories';
   $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
@@ -16,7 +16,7 @@ if(isset($request)){
     $ejemplo = [
       'text' => $key['description'],
       'url'  => 'categories/'.$key['id'],
-      'icon' => 'fas fa-chart-area',
+      'icon' => 'fa fa-book-medical',
     ];
     array_push($items, $ejemplo);
   }
