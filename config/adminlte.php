@@ -1,6 +1,14 @@
 <?php
-$uri = 'http://laravel/health/getItemsSideBar.php?items=1';
-$categories = json_decode(file_get_contents($uri), true);
+$data = http_build_query(array('items' => 1));
+$options = array(
+  'http' => array(
+    'method' => 'POST',
+    'content' => $data
+  )
+);
+$context = stream_context_create($options);
+$uri = 'http://laravel/health/getItemsSideBar.php';
+$categories = json_decode(file_get_contents($uri, true, $context), true,);
 $items = [
   // Navbar items:
   [

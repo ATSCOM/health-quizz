@@ -8,12 +8,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('value') }}
-            {{ Form::select('value', ['1' => 'Verdadero', '0' => 'Falso'], $answer->value ,['class' => 'form-control' . ($errors->has('value') ? ' is-invalid' : '')]); }}
+            {{ Form::select('value', ['1' => 'Verdadero', '0' => 'Falso'], $answer->value ,['class' => 'form-control select2' . ($errors->has('value') ? ' is-invalid' : '')]); }}
             {!! $errors->first('value', '<div class="invalid-feedback">:message</p>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('question') }}
-            {{ Form::select('question_id', $questions, null,['class' => 'form-control' . ($errors->has('question_id') ? ' is-invalid' : '')]) }}
+            {{ Form::select('question_id', $questions, null,['class' => 'form-control select2' . ($errors->has('question_id') ? ' is-invalid' : '')]) }}
 
             {!! $errors->first('question_id', '<div class="invalid-feedback">:message</p>') !!}
         </div>

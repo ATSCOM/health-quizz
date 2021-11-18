@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('quiz') }}
-            {{ Form::select('quiz_id', $quizzes, null,['class' => 'form-control' . ($errors->has('quiz_id') ? ' is-invalid' : '')]) }}
+            {{ Form::select('quiz_id', $quizzes, null,['class' => 'form-control select2' . ($errors->has('quiz_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('quiz_id', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 

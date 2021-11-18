@@ -11,7 +11,7 @@ if(isset($request)){
   $stmt->execute();
   $data = $stmt->fetchAll();
 
-  $items = [];
+  $items = [['header' => 'Categorias']];
   foreach($data as $key){
     $ejemplo = [
       'text' => $key['description'],
