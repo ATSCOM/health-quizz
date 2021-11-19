@@ -3,6 +3,7 @@ $data = http_build_query(array('items' => 1));
 $options = array(
   'http' => array(
     'method' => 'POST',
+    'header' => 'Content-Type: application/x-www-form-urlencoded',
     'content' => $data
   )
 );
