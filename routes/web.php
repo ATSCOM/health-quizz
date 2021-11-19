@@ -24,11 +24,11 @@ Route::post('logout', [UserController::class, 'logout']);
 //categories
 Route::resource('categories', CategoryController::class);
 //questions
-Route::resource('questions', QuestionController::class);
+Route::resource('questions', QuestionController::class)->middleware('auth');
 //Answers
-Route::resource('answers', AnswerController::class);
+Route::resource('answers', AnswerController::class)->middleware('auth');
 //Quizzes
-Route::resource('quizzes', QuizController::class);
+Route::resource('quizzes', QuizController::class)->middleware('auth');
 Route::get('quizz/{id}', function () {
     return view('quizz');
 });
