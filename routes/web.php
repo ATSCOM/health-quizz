@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
@@ -16,12 +15,12 @@ Route::post('/', [QuizController::class, 'showHome']);
 //Window of home
 Route::get('home', [QuizController::class, 'showHome']);
 //for users
-//Route::get('category/{id}', [QuestionController::class, 'indexHome']);
-Route::get('register', [RegisterController::class, 'create']);
-Route::post('register', [RegisterController::class, 'store']);
-Route::get('login', [SessionsController::class, 'create']);
-Route::post('login', [SessionsController::class, 'store']);
-Route::post('logout', [SessionsController::class, 'logout']);
+Route::get('register', [UserController::class, 'registerIndex'])->middleware('auth');
+Route::post('register', [UserController::class, 'crearStore']);
+//Con middleware controlamos que sin un inicio de sesion esta pantalla no pueda crear ningun usuario
+Route::get('login', [UserController::class, 'loginIndex'])->name('login');
+Route::post('login', [UserController::class, 'loginStore']);
+Route::post('logout', [UserController::class, 'logout']);
 //categories
 Route::resource('categories', CategoryController::class);
 //questions

@@ -21,5 +21,4 @@ class User extends Authenticatable
     {
         return 'img/users/user.png';
     }
-
 }
