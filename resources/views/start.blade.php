@@ -7,7 +7,7 @@
     <div class="login-box">
 
         <div class="login-logo">
-            <a href="home"><img src="img/ucevaLogo.png" alt="Logo alternativo de la uceva"></a>
+            <img src="img/ucevaLogo.png" alt="Logo alternativo de la uceva">
         </div>
 
         <div class="card">
