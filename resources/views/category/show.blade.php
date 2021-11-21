@@ -1,6 +1,8 @@
 @extends('adminlte::page')
 
-@section('title', 'Categories')
+@section('title')
+    {{ $category->description ?? 'Categories' }}
+@endsection
 
 @section('content')
     @csrf

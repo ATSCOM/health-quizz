@@ -46,14 +46,14 @@ class ResourceController extends Controller
     {
         request()->validate(Resource::$rules);
 
-        $resource = $request->all();
+        $resour = $request->all();
 
         //store img in table
         if($img = $request->file('route')->store('public/resources/')){
-            $resource['route'] = Storage::url($img);
+            $resour['route'] = Storage::url($img);
         }
-
-        $resource = Resource::create($resource);
+        //create one resource
+        $resource = Resource::create($resour);
 
         return redirect()->route('resources.index')
             ->with('success', 'Resource created successfully.');
@@ -96,7 +96,14 @@ class ResourceController extends Controller
     {
         request()->validate(Resource::$rules);
 
-        $resource->update($request->all());
+        $resour = $request->all();
+
+        //store img in table
+        if($img = $request->file('route')->store('public/resources/')){
+            $resour['route'] = Storage::url($img);
+        }
+        //update one resource
+        $resource->update($resour);
 
         return redirect()->route('resources.index')
             ->with('success', 'Resource updated successfully');

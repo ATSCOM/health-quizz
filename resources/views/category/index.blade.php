@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('template_title')
+@section('title')
     Category
 @endsection
 

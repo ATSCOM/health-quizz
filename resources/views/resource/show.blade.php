@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
-@section('template_title')
-    {{ $resource->name ?? 'Show Resource' }}
+@section('title')
+    {{ $resource->category->description ?? 'Show Resource' }}
 @endsection
 
 @section('content')

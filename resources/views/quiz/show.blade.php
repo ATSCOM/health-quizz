@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
-@section('template_title')
-    {{ $quiz->name ?? 'Show Quiz' }}
+@section('title')
+    {{ $quiz->description ?? 'Show Quiz' }}
 @endsection
 
 @section('content')
