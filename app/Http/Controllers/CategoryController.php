@@ -26,14 +26,6 @@ class CategoryController extends Controller
     }
 
     /**
-    * Return view of 'question' in principal page with a message of greet
-    */
-    public function quizz($id){
-      $questions = Category::find($id);
-      return view('quizz', ['categoria' => $questions['description']]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

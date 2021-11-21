@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Resource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ResourceController
@@ -45,7 +46,14 @@ class ResourceController extends Controller
     {
         request()->validate(Resource::$rules);
 
-        $resource = Resource::create($request->all());
+        $resource = $request->all();
+
+        //store img in table
+        if($img = $request->file('route')->store('public/resources/')){
+            $resource['route'] = Storage::url($img);
+        }
+
+        $resource = Resource::create($resource);
 
         return redirect()->route('resources.index')
             ->with('success', 'Resource created successfully.');

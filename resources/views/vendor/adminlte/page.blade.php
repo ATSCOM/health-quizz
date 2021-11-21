@@ -48,12 +48,15 @@
 @stop
 
 @section('adminlte_js')
-    @stack('js')
-    @yield('js')
+    <!-- Sweetalert2 for alerts more nice -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ URL::asset('js/select2.min.js'); }}"></script>
     <script>
         $(document).ready(() => {
             $('.select2').select2();
         });
     </script>
+    @stack('js')
+    @yield('js')
+
 @stop

@@ -1,7 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Home')
+@section('title', $quizs->description)
 
 @section('content')
-Bienvenido al Quizz {{$categoria ?? 'as'}}
+
+
+
+
 @endsection

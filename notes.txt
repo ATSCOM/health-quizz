@@ -14,3 +14,9 @@ USE:
 add 'select2' as class in tags 'select'
 Ex: Form::select('name', data, ['class' => 'select2'])
 #############################
+
+####### Add storage in public ########
+
+php artisan storage:link
+
+######################################

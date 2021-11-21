@@ -8,7 +8,7 @@ $options = array(
   )
 );
 $context = stream_context_create($options);
-$uri = 'http://laravel/health/getItemsSideBar.php';
+$uri = 'http://localhost/health/getItemsSideBar.php';
 $categories = json_decode(file_get_contents($uri, true, $context), true,);
 $items = [
     // Navbar items:

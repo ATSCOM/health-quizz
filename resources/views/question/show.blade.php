@@ -32,6 +32,15 @@
                             <strong>Quiz:</strong>
                             {{ $question->quiz->description }}
                         </div>
+                        <div class="form-group">
+                            <strong>Image:</strong>
+                            @if ($question->image == "NULL" || $question->image == "")
+                                <p>Image not found.</p>
+                            @else
+                                <img src="{{ asset("$question->image") }}" class="img-fluid rounded d-block" alt="Image get quiz {{ $question->quiz->description }}" width="50%">
+                            @endif
+
+                        </div>
 
                     </div>
                 </div>

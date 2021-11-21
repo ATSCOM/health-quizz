@@ -12,6 +12,15 @@ use Illuminate\Http\Request;
  */
 class QuizController extends Controller
 {
+
+    /**
+    * Return view of 'question' in principal page with a message of greet
+    */
+    public function quizz($id){
+        $quizs = Quiz::find($id);
+        return view('quizz', compact('quizs'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,8 +58,7 @@ class QuizController extends Controller
 
         $quiz = Quiz::create($request->all());
 
-        return redirect()->route('quizzes.index')
-            ->with('success', 'Quiz created successfully.');
+        return redirect()->route('questions.create');
     }
 
     /**
@@ -65,6 +73,9 @@ class QuizController extends Controller
 
         return view('quiz.show', compact('quiz'));
     }
+    /*
+    * Return list of quizzes for list on home
+    */
 
     public function showHome()
     {

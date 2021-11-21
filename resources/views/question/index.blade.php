@@ -53,7 +53,7 @@
 											<td>{{ $question->quiz->description }}</td>
 
                                             <td>
-                                                <form action="{{ route('questions.destroy',$question->id) }}" method="POST">
+                                                <form action="{{ route('questions.destroy',$question->id) }}" method="POST" class="form-delete">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('questions.show',$question->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('questions.edit',$question->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
@@ -72,4 +72,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
 @endsection

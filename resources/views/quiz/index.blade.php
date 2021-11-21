@@ -1,16 +1,18 @@
 @extends('adminlte::page')
 
+@section('title', 'Quiz')
+
 @section('content_header')
 <div class="card-header">
     <div style="display: flex; justify-content: space-between; align-items: center;">
 
         <span id="card_title">
-            {{ __('Quiz') }}
+            {{ __('List Quizzes') }}
         </span>
 
         <div class="float-right">
             <a href="{{ route('quizzes.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
-                {{ __('Create New') }}
+                {{ __('Back') }}
             </a>
         </div>
     </div>
@@ -51,8 +53,7 @@
                                     <td>{{ $quiz->category->description }}</td>
 
                                     <td>
-                                        <form action="{{ route('quizzes.destroy',$quiz->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('quizzes.show',$quiz->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                        <form action="{{ route('quizzes.destroy',$quiz->id) }}" method="POST" class="form-delete">
                                             <a class="btn btn-sm btn-success" href="{{ route('quizzes.edit',$quiz->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                             @csrf
                                             @method('DELETE')
@@ -71,3 +72,9 @@
     </div>
 </div>
 @stop
+
+@section('js')
+
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
+@endsection

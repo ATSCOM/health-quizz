@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Description</th>
 
                                         <th></th>
@@ -45,12 +45,11 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $category->description }}</td>
 
                                             <td>
-                                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('categories.show',$category->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                <form action="{{ route('categories.destroy',$category->id) }}" method="POST" class="form-delete">
                                                     <a class="btn btn-sm btn-success" href="{{ route('categories.edit',$category->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
@@ -69,3 +68,10 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
+@endsection
+

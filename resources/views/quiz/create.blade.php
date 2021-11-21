@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('template_title')
+@section('title')
     Create Quiz
 @endsection
 
@@ -13,7 +13,12 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Quiz</span>
+                        <div class="float-left">
+                            <a class="btn btn-primary" href="{{ route('categories.create') }}"> Category</a>
+                        </div>
+                        <div class="float-right">
+                            <a class="btn btn-primary" href="{{ route('quizzes.index') }}"> Show</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('quizzes.store') }}"  role="form" enctype="multipart/form-data">
