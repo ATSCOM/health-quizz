@@ -8,15 +8,21 @@ $options = array(
   )
 );
 $context = stream_context_create($options);
-$uri = 'http://localhost/health/getItemsSideBar.php';
+$uri = 'http://laravel/health/getItemsSideBar.php';
 $categories = json_decode(file_get_contents($uri, true, $context), true,);
 $items = [
-  // Navbar items:
-  [
-    'type'         => 'navbar-search',
-    'text'         => 'find an cuestion',
-    'topnav_right' => true,
-  ]
+    // Navbar items:
+    [
+        'type'         => 'navbar-search',
+        'text'         => 'find an cuestion',
+        'topnav_right' => true,
+    ],
+    // Sidebar items:
+    [
+        'text' => 'Resources',
+        'url'  => 'resources',
+        'icon' => 'fas fa-sd-card',
+    ],
 ];
 foreach($categories as $category){
   array_push($items, $category);
