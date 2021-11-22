@@ -16,3 +16,4 @@ yarn-error.log
 getItemsSideBar.php
 config/adminlte.php
 config/database.php
+config/personal.php

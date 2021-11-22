@@ -1,15 +1,17 @@
 <?php
+require 'config/personal.php';
 $request = $_REQUEST['items'];
 if(isset($request)){
   $host = 'localhost';
-  $user = 'jl';
-  $password = '911';
-  $dbName = 'health';
+  $user = $DB_USER;
+  $password = $DB_PASSWORD;
+  $dbName = $DB_NAME;
   $table = 'categories';
   $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);
   $stmt = $pdo->prepare("SELECT * FROM $table");
   $stmt->execute();
   $data = $stmt->fetchAll();
+  $pdo = null;
 
   $items = [['header' => 'Categorias']];
   foreach($data as $key){
