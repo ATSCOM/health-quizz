@@ -14,14 +14,6 @@ class QuizController extends Controller
 {
 
     /**
-    * Return view of 'question' in principal page with a message of greet
-    */
-    public function quizz($id){
-        $quizs = Quiz::find($id);
-        return view('quizz', compact('quizs'));
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -83,7 +75,7 @@ class QuizController extends Controller
         //almacenamos en una variable los nombres de las categorias
         $def = array();
         foreach ($quizzes as $quiz) {
-            $def[] = $quiz->category->description;
+            $def[] = $quiz->category;
         }
         //quitamos valores repetidos
         $values = array_unique($def);
