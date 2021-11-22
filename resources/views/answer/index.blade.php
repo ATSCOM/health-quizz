@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('template_title')
+@section('title')
     Answer
 @endsection
 
@@ -53,7 +53,7 @@
 											<td>{{ $answer->question->descriptions }}</td>
 
                                             <td>
-                                                <form action="{{ route('answers.destroy',$answer->id) }}" method="POST">
+                                                <form action="{{ route('answers.destroy',$answer->id) }}" method="POST" class="form-delete">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('answers.show',$answer->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('answers.edit',$answer->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
@@ -72,4 +72,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class QuestionController
@@ -52,8 +53,13 @@ class QuestionController extends Controller
   public function store(Request $request)
   {
     request()->validate(Question::$rules);
-
-    $question = Question::create($request->all());
+    $quest = $request->all();
+    //store img in table
+    if($img = $request->file('image')->store('public/images/')){
+        $quest['image'] = Storage::url($img);
+    }
+    //create one question
+    $question = Question::create($quest);
 
     return redirect()->route('questions.index')
       ->with('success', 'Question created successfully.');
@@ -96,7 +102,13 @@ class QuestionController extends Controller
   {
     request()->validate(Question::$rules);
 
-    $question->update($request->all());
+    $quest = $request->all();
+    //store img in table
+    if($img = $request->file('image')->store('public/images/')){
+        $quest['image'] = Storage::url($img);
+    }
+    //update one question
+    $question->update($quest);
 
     return redirect()->route('questions.index')
       ->with('success', 'Question updated successfully');

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ResourceController;
 
 //sign in with nickname
 Route::get('/', function(){
@@ -29,6 +30,6 @@ Route::resource('questions', QuestionController::class)->middleware('auth');
 Route::resource('answers', AnswerController::class)->middleware('auth');
 //Quizzes
 Route::resource('quizzes', QuizController::class)->middleware('auth');
-Route::get('quizz/{id}', function () {
-    return view('quizz');
-});
+Route::get('quizz/{id}', [QuizController::class, 'quizz']);
+//Resources for categories
+Route::resource('resources', ResourceController::class);

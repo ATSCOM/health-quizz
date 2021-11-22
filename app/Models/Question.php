@@ -14,6 +14,7 @@ class Question extends Model
     static $rules = [
 		'descriptions' => 'required',
 		'justify' => 'required',
+		'image' => 'image|mimes:jpg,jpeg,png,gif,svg|max:2048',
 		'quiz_id' => 'required',
     ];
 
@@ -24,7 +25,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['descriptions','justify','quiz_id'];
+    protected $fillable = ['descriptions','justify','image','quiz_id'];
 
 
     /**

@@ -12,12 +12,18 @@ $context = stream_context_create($options);
 $uri = "http://$HOST/health/getItemsSideBar.php";
 $categories = json_decode(file_get_contents($uri, true, $context), true,);
 $items = [
-  // Navbar items:
-  [
-    'type'         => 'navbar-search',
-    'text'         => 'find an cuestion',
-    'topnav_right' => true,
-  ]
+    // Navbar items:
+    [
+        'type'         => 'navbar-search',
+        'text'         => 'find an cuestion',
+        'topnav_right' => true,
+    ],
+    // Sidebar items:
+    [
+        'text' => 'Resources',
+        'url'  => 'resources',
+        'icon' => 'fas fa-sd-card',
+    ],
 ];
 foreach($categories as $category){
   array_push($items, $category);
@@ -68,7 +74,7 @@ $dataReturn = [
     */
 
   'logo' => '<b>Salud</b>UCEVA',
-  'logo_img' => 'img/ucevaLogo.png',
+  'logo_img' => 'images/pages/ucevaLogo.png',
   'logo_img_class' => 'brand-image img-circle elevation-3',
   'logo_img_xl' => null,
   'logo_img_xl_class' => 'brand-image-xs',

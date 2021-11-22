@@ -12,7 +12,7 @@ class Resource extends Model
     public $timestamps = false;
 
     static $rules = [
-		'route' => 'required',
+		'route' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
 		'category_id' => 'required',
     ];
 
@@ -31,7 +31,7 @@ class Resource extends Model
      */
     public function category()
     {
-        return $this->hasOne('App\Category', 'id', 'category_id');
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
 
 }

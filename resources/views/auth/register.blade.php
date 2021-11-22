@@ -7,7 +7,7 @@
     <div class="login-box">
 
         <div class="login-logo">
-            <a href="home"><img src="img/ucevaLogo.png" alt="Logo alternativo de la uceva"></a>
+            <a href="home"><img src="{{ asset('images/pages/ucevaLogo.png') }}" alt="Logo alternativo de la uceva"></a>
         </div>
 
         <div class="card">

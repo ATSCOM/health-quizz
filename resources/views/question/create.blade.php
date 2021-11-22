@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('template_title')
+@section('title')
     Create Question
 @endsection
 
@@ -16,9 +16,8 @@
                         <span class="card-title">Create Question</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('questions.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('questions.store') }}" enctype="multipart/form-data">
                             @csrf
-
                             @include('question.form')
 
                         </form>
