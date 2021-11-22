@@ -2,7 +2,7 @@
 require 'config/personal.php';
 $request = $_REQUEST['items'];
 if(isset($request)){
-  $host = 'localhost';
+  $host = $HOST;
   $user = $DB_USER;
   $password = $DB_PASSWORD;
   $dbName = $DB_NAME;

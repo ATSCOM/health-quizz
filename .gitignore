@@ -13,7 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-getItemsSideBar.php
-config/adminlte.php
 config/database.php
 config/personal.php
