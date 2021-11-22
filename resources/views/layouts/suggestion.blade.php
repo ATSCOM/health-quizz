@@ -4,16 +4,16 @@
     <!-- titulo section por categorias -->
 
     @foreach ($quizzes as $quiz)
-
-        <a role="button" class="btn btn-lg" href="{{ URL::asset('quizz/'.$quiz->id) }}">
-            <div class="card mb-3" style="width: 10rem;">
-                <img src="{{ asset('images/pages/bandera-uceva.png') }}" class="card-img-top img-thumbnail" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $quiz->description }}</h5>
+        @if ($val->id == $quiz->category_id)
+            <a role="button" class="btn btn-lg" href="{{ URL::asset('quizz/'.$quiz->id) }}">
+                <div class="card mb-3" style="width: 10rem;">
+                    <img src="{{ asset('images/pages/bandera-uceva.png') }}" class="card-img-top img-thumbnail" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $quiz->description }}</h5>
+                    </div>
                 </div>
-            </div>
-        </a>
-
+            </a>
+        @endif
     @endforeach
 
 @endif
