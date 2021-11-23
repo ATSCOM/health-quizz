@@ -62,6 +62,8 @@ class QuizController extends Controller
     public function show($id)
     {
         $quiz = Quiz::find($id);
+        //si no trae nada genere un error
+        if(empty($quiz))return view('errors.404');
 
         return view('quiz.show', compact('quiz'));
     }

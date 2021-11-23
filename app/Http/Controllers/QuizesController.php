@@ -12,15 +12,22 @@ class QuizesController extends Controller
     /**
     * Return view of 'question' in principal page with a message of greet
     */
+
     public function quizz($id){
         $quizs = Quiz::find($id);
-        $questions = Question::get()->where('quiz_id', $quizs->id);
-        $ids = array();
-        foreach ($questions as $question) {
-            $ejemplo = $question->id;
-            array_push($ids, $ejemplo);
-        }
-        $answers = Answer::all();
-        return view('quizz1', compact('ids','questions'));
+        //si no trae nada genere un error
+        if(empty($quizs))return view('errors.404');
+        $cants = Question::where('quiz_id', $quizs->id)->count();
+        return view('quiz.show', compact('cants','id'));
     }
+
+    public function start(Request $request){
+        //si no trae nada genere un error
+        if(empty($_POST['sabe']))return view('errors.404');
+        //por el momento esta variable no es necesaria
+        $ids = ['1', '2'];
+
+        return view('quiz.quizzes.quizz', compact('ids'));
+    }
+
 }

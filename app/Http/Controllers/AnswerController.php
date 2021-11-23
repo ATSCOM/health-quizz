@@ -62,6 +62,8 @@ class AnswerController extends Controller
     public function show($id)
     {
         $answer = Answer::find($id);
+        //si no trae nada genere un error
+        if(empty($answer))return view('errors.404');
 
         return view('answer.show', compact('answer'));
     }

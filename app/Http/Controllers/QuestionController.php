@@ -74,6 +74,8 @@ class QuestionController extends Controller
   public function show($id)
   {
     $question = Question::find($id);
+    //si no trae nada genere un error
+    if(empty($question))return view('errors.404');
 
     return view('question.show', compact('question'));
   }

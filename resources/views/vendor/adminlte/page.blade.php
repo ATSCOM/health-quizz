@@ -51,6 +51,7 @@
     <!-- Sweetalert2 for alerts more nice -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ URL::asset('js/select2.min.js'); }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(() => {
             $('.select2').select2();

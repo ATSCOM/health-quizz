@@ -68,6 +68,8 @@ class ResourceController extends Controller
     public function show($id)
     {
         $resource = Resource::find($id);
+        //si no trae nada genere un error
+        if(empty($resource))return view('errors.404');
 
         return view('resource.show', compact('resource'));
     }

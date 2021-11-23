@@ -11,7 +11,7 @@ use App\Http\Controllers\ResourceController;
 
 //sign in with nickname
 Route::get('/', function(){
-    return view('start');
+    return view('auth.start');
 });
 Route::post('/', [QuizController::class, 'showHome']);
 //Window of home
@@ -32,5 +32,6 @@ Route::resource('answers', AnswerController::class)->middleware('auth');
 //Quizzes
 Route::resource('quizzes', QuizController::class)->middleware('auth');
 Route::get('quizz/{id}', [QuizesController::class, 'quizz']);
+Route::post('starting', [QuizesController::class, 'start']);
 //Resources for categories
 Route::resource('resources', ResourceController::class);
