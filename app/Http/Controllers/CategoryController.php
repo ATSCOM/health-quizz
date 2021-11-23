@@ -61,6 +61,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
+        //si no trae nada genere un error
+        if(empty($category))return view('errors.404');
+        //Buscamos los quizzes con esa categoria
         $quizzes = Quiz::where('category_id', '=', $category->id)->paginate();
         //almacenamos en una variable los nombres de las categorias
         $def = array();
