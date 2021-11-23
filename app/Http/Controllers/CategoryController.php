@@ -62,8 +62,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $quizzes = Quiz::where('category_id', '=', $category->id)->paginate();
-
-        return view('category.show', compact('category', 'quizzes'));
+        //almacenamos en una variable los nombres de las categorias
+        $def = array();
+        foreach ($quizzes as $quiz) {
+            $def[] = $quiz->category;
+        }
+        //quitamos valores repetidos
+        $values = array_unique($def);
+        return view('home', compact('quizzes', 'values'));
     }
 
     /**
