@@ -9,7 +9,7 @@ _A very cool project in which we integrated several technologies with which we c
 _Clone the project wherever you want_
 
 ```
-git clone https://github.com/TheGeorgeZ/software-medicina.git
+git clone https://github.com/TheGeorgeZ/health-uce.git
 ```
 
 _Installation composer_
