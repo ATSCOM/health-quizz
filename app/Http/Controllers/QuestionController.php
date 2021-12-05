@@ -55,7 +55,7 @@ class QuestionController extends Controller
     request()->validate(Question::$rules);
     $quest = $request->all();
     //store img in table
-    if($img = $request->file('image')->store('public/images/')){
+    if($img = $request->file('image')->store('public/images/quizzes')){
         $quest['image'] = Storage::url($img);
     }
     //create one question

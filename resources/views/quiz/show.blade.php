@@ -32,7 +32,7 @@
                             <div class="col-md-auto">
                                 <form action="{{ asset('starting') }}" method="POST" class="form-start">
                                     @csrf
-                                    <input type="text" name="sabe" value="{{ $id }}" hidden>
+                                    <input type="text" name="idQuiz" value="{{ $id }}" hidden>
                                     <button type="submit" class="btn btn-outline-info btn-lg btn-block"> Intente resolver el cuestionario ahora</button>
                                 </form>
                             </div>

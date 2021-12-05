@@ -1,63 +1,51 @@
 @extends('adminlte::page')
 
 @section('title')
-    {{ $quizs->description ?? 'Quizz' }}
+{{ $quizs->description ?? 'Quizz' }}
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Aciertos</th>
-                                <th>Errores</th>
-                                <th>Pregunta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1 de {{ count($ids) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-body">
-                    <form class="">
-                        @csrf
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <p class="font-weight-bold">¿Cuál es la famosa serie que aprece en la siguiente imagen?</p>
-                                <img src="{{ asset('/storage/images/zpx5yzSUg7yndK4tUbwkxeu2GKwT2yj1nALq5cwc.png') }}" class="img-fluid card-img-top" alt="" width="50%">
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <p class="font-weight-bold">Seleccione una opción:</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Aciertos</th>
+                            <th>Errores</th>
+                            <th>Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1 de {{ count($ids) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ asset('starting') }}">
+                    <input type="text" id="responseQuiz" name="responseUser" readonly hidden>
+                    <input type="text" id="step" name="step" readonly value="{{ is_null($response) ? '0' : '1' }}" hidden>
 
-                                <a class="btn btn-primary btn-lg btn-block" href=""> Los Simpson</a>
-                                <a class="btn btn-primary btn-lg btn-block" href=""> Rick and morty</a>
-                                <a class="btn btn-primary btn-lg btn-block" href=""> Futurama</a>
-                                <a class="btn btn-primary btn-lg btn-block" href=""> Dragon ball</a>
-
-                                <div class="form-floating mt-3">
-                                    <textarea class="form-control" placeholder="Justifique su respuesta" id="floatingTextarea"></textarea>
-                                </div>
-                            </div>
+                    @csrf
+                    @include('quiz.template.quizz', ['question' => $question['descriptions'], 'options' => $question['options'], 'reason' => $response])
+                    <input type="hidden" name="idQuestion" value="{{ $question['id'] }}">
+                    <input type="hidden" name="idQuiz" value="{{ $question['quiz_id'] }}">
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <button type="button" class="btn btn-success btn-lg btn-block" id="prueba"> Terminar intento</button>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mt-3">
-                                <button type="submit" class="btn btn-success btn-lg btn-block" hidden> Terminar intento</button>
-                            </div>
-                            <div class="col-md-6 mt-3">
-                                <a class="btn btn-secondary btn-lg btn-block" href=""> Siguiente</a>
-                            </div>
+                        <div class="col-md-6 mt-3">
+                            <button class="btn btn-secondary btn-lg btn-block"> Siguiente</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
