@@ -14,6 +14,7 @@ class Quiz extends Model
     static $rules = [
 		'description' => 'required',
 		'category_id' => 'required',
+        'image' => 'image|mimes:jpg,jpeg,png,gif,svg|max:2048',
     ];
 
     protected $perPage = 20;
@@ -23,7 +24,7 @@ class Quiz extends Model
      *
      * @var array
      */
-    protected $fillable = ['description','category_id'];
+    protected $fillable = ['description','category_id','image'];
 
 
     /**

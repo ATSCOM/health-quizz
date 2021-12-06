@@ -16,6 +16,7 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->text('description');
+            $table->text('image')->nullable()->default('NULL');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
         });
     }

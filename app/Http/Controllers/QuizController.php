@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Traits\Template;
 
 /**
  * Class QuizController
@@ -12,6 +13,9 @@ use Illuminate\Http\Request;
  */
 class QuizController extends Controller
 {
+
+    use Template;
+    private $name = 'quizzes';
 
     /**
      * Display a listing of the resource.
@@ -46,10 +50,14 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
+        //validamos todas las reglas del modelo
         request()->validate(Quiz::$rules);
-
-        $quiz = Quiz::create($request->all());
-
+        //asignamos todos los datos del formulario a una variable
+        $quizz = $request->all();
+        //movemos su respectiva imagen
+        $quizz['image'] = QuizController::moveImage($request, $this->name);
+        //Creamos el quizz
+        $quiz = Quiz::create($quizz);
         return redirect()->route('questions.create');
     }
 
@@ -73,7 +81,7 @@ class QuizController extends Controller
 
     public function showHome()
     {
-        $quizzes = Quiz::paginate();
+        $quizzes = Quiz::all();
         //almacenamos en una variable los nombres de las categorias
         $def = array();
         foreach ($quizzes as $quiz) {
@@ -106,9 +114,14 @@ class QuizController extends Controller
      */
     public function update(Request $request, Quiz $quiz)
     {
+        //validamos todas las reglas del modelo
         request()->validate(Quiz::$rules);
-
-        $quiz->update($request->all());
+        //asignamos todos los datos del formulario a una variable
+        $quizz = $request->all();
+        //movemos su respectiva imagen
+        $quizz['image'] = QuizController::moveImage($request, $this->name);
+        //Actualizamos el quizz
+        $quiz->update($quizz);
 
         return redirect()->route('quizzes.index')
             ->with('success', 'Quiz updated successfully');

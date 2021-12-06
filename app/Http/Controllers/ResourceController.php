@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\Template;
 
 /**
  * Class ResourceController
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Storage;
  */
 class ResourceController extends Controller
 {
+
+    use Template;
+    private $name = 'resources';
+
     /**
      * Display a listing of the resource.
      *
@@ -44,14 +49,12 @@ class ResourceController extends Controller
      */
     public function store(Request $request)
     {
+        //validamos las reglas del modelo
         request()->validate(Resource::$rules);
-
+        //asignamos todos los datos del formulario a una variable
         $resour = $request->all();
-
-        //store img in table
-        if($img = $request->file('route')->store('public/resources/')){
-            $resour['route'] = Storage::url($img);
-        }
+        //Movemos la imagen
+        $resour['route'] = ResourceController::moveImage($request, $this->name);
         //create one resource
         $resource = Resource::create($resour);
 
@@ -96,14 +99,12 @@ class ResourceController extends Controller
      */
     public function update(Request $request, Resource $resource)
     {
+        //validamos las reglas del modelo
         request()->validate(Resource::$rules);
-
+        //asignamos todos los datos del formulario a una variable
         $resour = $request->all();
-
-        //store img in table
-        if($img = $request->file('route')->store('public/resources/')){
-            $resour['route'] = Storage::url($img);
-        }
+        //Movemos la imagen
+        $resour['route'] = ResourceController::moveImage($request, $this->name);
         //update one resource
         $resource->update($resour);
 
