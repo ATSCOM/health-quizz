@@ -19,4 +19,10 @@ Trait Template {
         }
 
     }
+    //Guardar array o cualquier cosa en una cookie
+    public static function addCookieFo($nameCookie, $cookieAdd){
+        $json = json_encode($cookieAdd);
+        setcookie($nameCookie, $json);
+    }
+
 }

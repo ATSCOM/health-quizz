@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Question;
 use App\Models\Answer;
+use Illuminate\Support\Facades\DB;
 
 class QuizesController extends Controller
 {
@@ -27,16 +28,16 @@ class QuizesController extends Controller
         //si no trae nada genere un error
         $idQuizz = $request['idQuiz'];
         if (empty($idQuizz)) return view('errors.404');
+        //Busque todas las preguntas
+        $questions = Question::where('quiz_id', '=', $idQuizz)->get();
+        //validaciones del step
         $idQuestion = !empty($request['idQuestion']) ? $request['idQuestion'] : 0;
         $responseUser = $request['responseUser'];
         $response = null;
         $question = null;
         $step = $request['step'];
         if (!empty($responseUser) && $step != '1') {
-            $result = Answer::where([
-                ['id', '=', $responseUser],
-                ['value', '=', "1"]
-            ])->exists();
+            $result = DB::select('select * from answers where id = ? and value = ?', [$responseUser, 1]);
             $question = Question::where('id', $idQuestion)->first();
             $response = $result ? 'Correcto, ' : 'Incorrecto, ';
             $response .= $question['justify'];
@@ -54,6 +55,7 @@ class QuizesController extends Controller
             unset($option['question_id']);
             array_push($options, $option);
         }
+        shuffle($options);
         $question['options'] = $options;
         $ids = [1];
         return view('quiz.quizzes.quizz', compact('ids', 'question', 'response'));
