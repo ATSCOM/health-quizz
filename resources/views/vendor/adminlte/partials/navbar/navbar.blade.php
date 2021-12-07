@@ -36,9 +36,6 @@
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
                 <li class="nav-item">
-                    <a type="button" class="btn btn-block btn-outline-success" href="{{ asset('quizzes/create') }}"><i class="fas fa-plus-circle"></i> Create question</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link " href="{{ asset('register') }}"><i class="fas fa-users"></i> Register</a>
                 </li>
                 @include('adminlte::partials.navbar.menu-item-dropdown-user-menu')

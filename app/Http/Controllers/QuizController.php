@@ -82,13 +82,8 @@ class QuizController extends Controller
     public function showHome()
     {
         $quizzes = Quiz::all();
-        //almacenamos en una variable los nombres de las categorias
-        $def = array();
-        foreach ($quizzes as $quiz) {
-            $def[] = $quiz->category;
-        }
-        //quitamos valores repetidos
-        $values = array_unique($def);
+        //para no repetir las categorias
+        $values = QuizController::uniqueCategories($quizzes);
         return view('home', compact('quizzes', 'values'));
     }
 

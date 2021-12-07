@@ -25,4 +25,16 @@ Trait Template {
         setcookie($nameCookie, $json);
     }
 
+    //No repetir categorias
+    public static function uniqueCategories($tryArray){
+        //almacenamos en una variable los nombres de las categorias
+        $def = array();
+        foreach ($tryArray as $tr) {
+            $def[] = $tr->category;
+        }
+        //quitamos valores repetidos
+        $values = array_unique($def);
+        return $values;
+    }
+
 }

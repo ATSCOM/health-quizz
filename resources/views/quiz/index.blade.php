@@ -6,15 +6,18 @@
 <div class="card-header">
     <div style="display: flex; justify-content: space-between; align-items: center;">
 
-        <span id="card_title">
-            {{ __('List Quizzes') }}
-        </span>
-
         <div class="float-right">
             <a href="{{ route('quizzes.create') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
+                {{ __('Create new') }}
+            </a>
+        </div>
+
+        <div class="float-right">
+            <a href="{{ asset('home') }}" class="btn btn-primary btn-sm float-right" data-placement="left">
                 {{ __('Back') }}
             </a>
         </div>
+
     </div>
 </div>
 @stop

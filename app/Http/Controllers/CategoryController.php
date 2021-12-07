@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
-
+use App\Traits\Template;
 /**
  * Class CategoryController
  * @package App\Http\Controllers
  */
 class CategoryController extends Controller
 {
+    use Template;
     /**
      * Display a listing of the resource.
      *
@@ -65,13 +66,8 @@ class CategoryController extends Controller
         if(empty($category))return view('errors.404');
         //Buscamos los quizzes con esa categoria
         $quizzes = Quiz::where('category_id', '=', $category->id)->paginate();
-        //almacenamos en una variable los nombres de las categorias
-        $def = array();
-        foreach ($quizzes as $quiz) {
-            $def[] = $quiz->category;
-        }
-        //quitamos valores repetidos
-        $values = array_unique($def);
+        //para no repetir las categorias
+        $values = QuizController::uniqueCategories($quizzes);
         return view('home', compact('quizzes', 'values'));
     }
 

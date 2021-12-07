@@ -21,7 +21,7 @@ $items = [
     // Sidebar items:
     [
         'text' => 'Resources',
-        'url'  => 'resources',
+        'url'  => 'assets',
         'icon' => 'fas fa-sd-card',
     ],
 ];

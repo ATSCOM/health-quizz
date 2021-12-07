@@ -12,15 +12,17 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Answer') }}
-                            </span>
-
-                             <div class="float-right">
+                            <div class="float-right">
                                 <a href="{{ route('answers.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                    {{ __('Create New') }}
                                 </a>
-                              </div>
+                            </div>
+
+                            <div class="float-right">
+                                <a href="{{ asset('home') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                    {{ __('Back') }}
+                                </a>
+                            </div>
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -54,7 +56,6 @@
 
                                             <td>
                                                 <form action="{{ route('answers.destroy',$answer->id) }}" method="POST" class="form-delete">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('answers.show',$answer->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('answers.edit',$answer->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')

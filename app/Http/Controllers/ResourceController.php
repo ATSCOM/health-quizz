@@ -124,4 +124,12 @@ class ResourceController extends Controller
         return redirect()->route('resources.index')
             ->with('success', 'Resource deleted successfully');
     }
+
+    /*
+     * Listar todos los recursos relacionados a las categorias
+     */
+    public function indexDefault(){
+        return 'hola';
+    }
+
 }

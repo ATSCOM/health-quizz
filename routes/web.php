@@ -24,7 +24,9 @@ Route::get('login', [UserController::class, 'loginIndex'])->name('login');
 Route::post('login', [UserController::class, 'loginStore']);
 Route::post('logout', [UserController::class, 'logout']);
 //categories
-Route::resource('categories', CategoryController::class);
+Route::get('issues/{id}', [CategoryController::class, 'show']);
+Route::resource('categories', CategoryController::class)->middleware('auth');
+
 //questions
 Route::resource('questions', QuestionController::class)->middleware('auth');
 //Answers
@@ -34,4 +36,5 @@ Route::resource('quizzes', QuizController::class)->middleware('auth');
 Route::get('quizz/{id}', [QuizesController::class, 'quizz']);
 Route::post('starting', [QuizesController::class, 'start']);
 //Resources for categories
-Route::resource('resources', ResourceController::class);
+Route::get('assets', [ResourceController::class, 'indexDefault']);
+Route::resource('resources', ResourceController::class)->middleware('auth');

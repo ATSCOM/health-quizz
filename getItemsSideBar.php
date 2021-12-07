@@ -17,7 +17,7 @@ if(isset($request)){
   foreach($data as $key){
     $ejemplo = [
       'text' => $key['description'],
-      'url'  => 'categories/'.$key['id'],
+      'url'  => 'issues/'.$key['id'],
       'icon' => 'fa fa-book-medical',
     ];
     array_push($items, $ejemplo);

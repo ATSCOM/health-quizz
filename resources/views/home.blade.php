@@ -11,5 +11,7 @@
                 @include('layouts.suggestion')
             </div>
         @endforeach
+    @else
+        @include('layouts.admin')
     @endif
 @endsection
