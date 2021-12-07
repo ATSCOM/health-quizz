@@ -25,8 +25,11 @@
                             {{ $resource->category->description }}
                         </div>
                         <div class="form-group">
-                            <strong>Route:</strong>
-                            <img src="{{ asset("$resource->route") }}" class="img-fluid rounded d-block" alt="Image get quiz {{ $resource->category->description }}" width="50%">
+                            @if ($resource->route != "NULL" && $resource->route != "")
+                                <img src="{{ asset("$resource->route") }}" class="img-fluid rounded d-block" alt="Image get quiz {{ $resource->category->description }}" width="50%">
+                            @else
+                                <p>Image not found.</p>
+                            @endif
                         </div>
 
                     </div>

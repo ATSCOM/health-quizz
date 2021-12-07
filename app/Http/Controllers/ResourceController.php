@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -38,7 +39,8 @@ class ResourceController extends Controller
     public function create()
     {
         $resource = new Resource();
-        return view('resource.create', compact('resource'));
+        $categories = Category::pluck('description', 'id');
+        return view('resource.create', compact('resource', 'categories'));
     }
 
     /**
@@ -54,12 +56,21 @@ class ResourceController extends Controller
         //asignamos todos los datos del formulario a una variable
         $resour = $request->all();
         //Movemos la imagen
-        $resour['route'] = ResourceController::moveImage($request, $this->name);
-        //create one resource
-        $resource = Resource::create($resour);
-
-        return redirect()->route('resources.index')
+        if($request->hasFile("route")){
+            $file = $request->file("route");
+            $nameFile = time().'.'.$file->guessExtension();
+            $route = public_path('archivos/');
+            $file->move($route, $nameFile);
+            $resour['route'] = 'archivos/'.$nameFile;
+            //create one resource
+            $resource = Resource::create($resour);
+            return redirect()->route('resources.index')
             ->with('success', 'Resource created successfully.');
+        }else {
+            return redirect()->route('resources.index')
+            ->with('warning', 'oops something went wrong.');
+        }
+
     }
 
     /**
@@ -86,8 +97,8 @@ class ResourceController extends Controller
     public function edit($id)
     {
         $resource = Resource::find($id);
-
-        return view('resource.edit', compact('resource'));
+        $categories = Category::pluck('description', 'id');
+        return view('resource.edit', compact('resource', 'categories'));
     }
 
     /**
@@ -104,12 +115,22 @@ class ResourceController extends Controller
         //asignamos todos los datos del formulario a una variable
         $resour = $request->all();
         //Movemos la imagen
-        $resour['route'] = ResourceController::moveImage($request, $this->name);
-        //update one resource
-        $resource->update($resour);
+        if($request->hasFile("route")){
+            $file = $request->file("route");
+            $nameFile = time().'.'.$file->guessExtension();
+            $route = public_path('archivos/');
+            $file->move($route, $nameFile);
+            $resour['route'] = 'archivos/'.$nameFile;
+            //update one resource
+            $resource->update($resour);
 
-        return redirect()->route('resources.index')
-            ->with('success', 'Resource updated successfully');
+            return redirect()->route('resources.index')
+                ->with('success', 'Resource updated successfully');
+        }else {
+            return redirect()->route('resources.index')
+            ->with('warning', 'oops something went wrong.');
+        }
+
     }
 
     /**
@@ -129,7 +150,9 @@ class ResourceController extends Controller
      * Listar todos los recursos relacionados a las categorias
      */
     public function indexDefault(){
-        return 'hola';
+        $resources = Resource::all();
+        $values = ResourceController::uniqueCategories($resources);
+        return view('resource.default', compact('resources', 'values'));
     }
 
 }

@@ -12,7 +12,7 @@ class Resource extends Model
     public $timestamps = false;
 
     static $rules = [
-		'route' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
+		'route' => 'required|file|max:10240',
 		'category_id' => 'required',
     ];
 

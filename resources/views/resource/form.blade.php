@@ -2,13 +2,13 @@
     <div class="box-body">
 
         <div class="form-group">
-            {{ Form::label('category_id') }}
-            {{ Form::text('category_id', $resource->category_id, ['class' => 'form-control' . ($errors->has('category_id') ? ' is-invalid' : ''), 'placeholder' => 'Category Id']) }}
+            {{ Form::label('category') }}
+            {{ Form::select('category_id', $categories, null,['class' => 'form-control select2' . ($errors->has('category_id') ? ' is-invalid' : '')]) }}
             {!! $errors->first('category_id', '<div class="invalid-feedback">:message</p>') !!}
         </div>
 
         <div class="form-group">
-            {{ Form::file('route', ['accept' => 'image/* ' . ($errors->has('route') ? ' is-invalid' : '')])}}
+            {{ Form::file('route', [($errors->has('route') ? ' is-invalid' : '')])}}
             @error('route')
                 <div class="">
                     <p class="text-danger">{{ $message }}</p>

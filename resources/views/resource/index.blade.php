@@ -40,9 +40,7 @@
 
 										<th>Category</th>
 										<th>Route</th>
-                                        @if(Auth::user())
-                                            <th></th>
-                                        @endif
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,19 +50,16 @@
 
 											<td>{{ $resource->category->description }}</td>
 											<td>
-                                                <img src="{{ asset("$resource->route") }}" class="img-fluid rounded d-block" alt="Image get resource of {{ $resource->category->description }}" width="50%">
+                                                <a class="btn btn-sm btn-outline-dark" href="{{ asset($resource->route) }}"><i class="fa fa-fw fa-eye"></i> Show file</a>
                                             </td>
-                                            @if(Auth::user())
-                                                <td>
-                                                    <form action="{{ route('resources.destroy',$resource->id) }}" method="POST" class="form-delete">
-                                                        <a class="btn btn-sm btn-primary " href="{{ route('resources.show',$resource->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                        <a class="btn btn-sm btn-success" href="{{ route('resources.edit',$resource->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                                    </form>
-                                                </td>
-                                            @endif
+                                            <td>
+                                                <form action="{{ route('resources.destroy',$resource->id) }}" method="POST" class="form-delete">
+                                                    <a class="btn btn-sm btn-success" href="{{ route('resources.edit',$resource->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
