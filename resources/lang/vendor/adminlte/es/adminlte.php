@@ -8,14 +8,15 @@ return [
     'retype_password'             => 'Confirmar la contraseña',
     'remember_me'                 => 'Recordarme',
     'register'                    => 'Registrarse',
-    'register_a_new_membership'   => 'Crear una nueva cuenta',
+    'register_a_new_membership'   => 'Registrar',
     'i_forgot_my_password'        => 'Olvidé mi contraseña',
     'i_already_have_a_membership' => 'Ya tengo una cuenta',
     'sign_in'                     => 'Acceder',
     'log_out'                     => 'Salir',
     'toggle_navigation'           => 'Alternar barra de navegación',
     'login_message'               => 'Autenticarse para iniciar sesión',
-    'register_message'            => 'Crear una nueva cuenta',
+    'user_login_message'          => 'Ingrese su nickname',
+    'register_message'            => 'Registrar',
     'password_reset_message'      => 'Restablecer la contraseña',
     'reset_password'              => 'Restablecer la contraseña',
     'send_password_reset_link'    => 'Enviar enlace para restablecer la contraseña',
@@ -25,4 +26,5 @@ return [
     'verify_if_not_recieved'      => 'Si no has recibido el correo electrónico',
     'verify_request_another'      => 'haga clic aquí para solicitar otro',
     'confirm_password_message'    => 'Por favor, confirme su contraseña para continuar.',
+    'username'                    => 'Nombre de usuario'
 ];
