@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <h3><strong>Guía del cuestionario</strong></h3>
-                                <h5>Cuestionario de {{ $cants }} preguntas.</h5>
+                                <h5>Cuestionario de {{ $_SESSION["cants"] }} preguntas.</h5>
                                 <p><strong>Importante:</strong> antes de enviar su intento, asegúrese de haber seleccionado una opción de respuesta por cada pregunta y una vez haya verificado sus elecciones, no olvide dar clic en el botón llamado 'Siguiente' que encontrará al final del examen; para terminar el intento y que la plataforma haga la calificación automática, debe dar clic en el botón identificado como 'Enviar todo y terminar'.</p>
                                 <p>Recuerde que para tener éxito con el desarrollo de esta prueba se recomienda:</p>
                                 <ul>
@@ -33,6 +33,9 @@
                                 <form action="{{ asset('starting') }}" method="POST" class="form-start">
                                     @csrf
                                     <input type="text" name="idQuiz" value="{{ $id }}" hidden>
+                                    <input type="text" name="successfulQ" value="{{ $_SESSION["successfulQ"] }}" hidden>
+                                    <input type="text" name="endIdQuestion" value="{{ $endId }}" hidden>
+                                    <input type="text" name="cantQuestions" value='{{ $_SESSION["cants"] }}' hidden>
                                     <button type="submit" class="btn btn-outline-info btn-lg btn-block"> Intente resolver el cuestionario ahora</button>
                                 </form>
                             </div>

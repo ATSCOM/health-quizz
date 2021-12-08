@@ -15,11 +15,14 @@
 
                     @csrf
                     @include('quiz.template.quizz', ['question' => $question['descriptions'], 'options' => $question['options'], 'reason' => $response,'image' => $question['image']])
+                    <input type="hidden" name="cantQuestions" value='{{ $cants }}'>
+                    <input type="hidden" name="successfulQ" value='{{ $successfulQ }}'>
+                    <input type="hidden" name="endIdQuestion" value="{{ $endIdQuestion }}">
                     <input type="hidden" name="idQuestion" value="{{ $question['id'] }}">
                     <input type="hidden" name="idQuiz" value="{{ $question['quiz_id'] }}">
                     <div class="row">
                         <div class="col-md-6 mt-3">
-                            <button type="button" class="btn btn-success btn-lg btn-block" id="prueba"> Terminar intento</button>
+                            <a href="{{ asset('home') }}" class="btn btn-success btn-lg btn-block"> Cancelar intento</a>
                         </div>
                         <div class="col-md-6 mt-3">
                             <button class="btn btn-secondary btn-lg btn-block"> Siguiente</button>
