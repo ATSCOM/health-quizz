@@ -12,7 +12,7 @@
 
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Enter your nickname</p>
+                <p class="login-box-msg"> {{ __('adminlte::adminlte.user_login_message') }} </p>
                 <form method="POST" action="">
                     @csrf
                     <div class="input-group mb-3">

@@ -36,7 +36,7 @@
         @if(Auth::user())
             @if(config('adminlte.usermenu_enabled'))
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ asset('register') }}"><i class="fas fa-users"></i> Register</a>
+                    <a class="nav-link " href="{{ asset('register') }}"><i class="fas fa-users"></i> {{ __('adminlte::adminlte.register_message') }} </a>
                 </li>
                 @include('adminlte::partials.navbar.menu-item-dropdown-user-menu')
             @else

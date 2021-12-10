@@ -12,7 +12,7 @@
 
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Login to the site</p>
+                <p class="login-box-msg">{{ __('adminlte::adminlte.login_message') }}</p>
                 <form method="POST" action="">
                     @csrf
                     @error('message')
@@ -20,7 +20,7 @@
                         </x-adminlte-alert>
                     @enderror
                     <div class="input-group mb-3">
-                        <input type="text" id="username" name="username" class="form-control" placeholder="username">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="{{ __('adminlte::adminlte.username') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -28,14 +28,14 @@
                         </div>
                     </div>
                     <div class="input-group mb-2">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="password">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('adminlte::adminlte.password') }}">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" id="button" name="button" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" id="button" name="button" class="btn btn-primary btn-block">{{ __('adminlte::adminlte.sign_in') }}</button>
                         </div>
                     </div>
                 </form>

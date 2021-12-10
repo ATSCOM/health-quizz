@@ -15,6 +15,7 @@ return [
     'log_out'                     => 'Log Out',
     'toggle_navigation'           => 'Toggle navigation',
     'login_message'               => 'Sign in to start your session',
+    'user_login_message'          => 'Enter your nickname',
     'register_message'            => 'Register a new membership',
     'password_reset_message'      => 'Reset Password',
     'reset_password'              => 'Reset Password',
@@ -25,4 +26,5 @@ return [
     'verify_if_not_recieved'      => 'If you did not receive the email',
     'verify_request_another'      => 'click here to request another',
     'confirm_password_message'    => 'Please, confirm your password to continue.',
+    'username'                    => 'Username',
 ];
