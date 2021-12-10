@@ -39,22 +39,17 @@
                         <div class="col-12 col-md-6 mt-3">
                             <div class="caja-principal">
                                 <div class="imagen">
-                                    <img src="{{ asset('images/pages/success.png') }}" alt=""><span class="text-bold">{{ $successfulQ }}</span>
+                                    <img src="{{ asset('images/pages/success.png') }}" alt="">
                                 </div>
-
-                                <div class="texto text-bold">
-                                    <h3 class="texto text-bold">Respuestas correctas</h3>
-                                </div>
+                                <h3 class="text-center text-bold">{{ $successfulQ }} <br> Respuestas correctas</h3>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 mt-3">
                             <div class="caja-principal">
                                 <div class="imagen">
-                                    <img src="{{ asset('images/pages/errors.png') }}" alt=""><span>{{ ($cants - $successfulQ) }}</span>
+                                    <img src="{{ asset('images/pages/errors.png') }}" alt="">
                                 </div>
-                                <div class="texto text-bold">
-                                    <h3 class="texto text-bold">Respuestas incorrectas</h3>
-                                </div>
+                                <h3 class="text-center text-bold">{{ ($cants - $successfulQ) }} <br> Respuestas incorrectas</h3>
                             </div>
                         </div>
                     </div>
