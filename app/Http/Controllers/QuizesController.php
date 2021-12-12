@@ -55,13 +55,15 @@ class QuizesController extends Controller
             */
             if(!empty($result)){
                 $successfulQ++;
-                $response = 'Correcto, ';
+                $response['message'] = 'Correcto, ';
+                $response['right'] = true;
             }
             else{
-                $response = 'Incorrecto, ';
+                $response['message'] = 'Incorrecto, ';
+                $response['right'] = false;
             }
 
-            $response .= $question['justify'];
+            $response['message'] .= $question['justify'];
         }
         if(is_null($response)){
             $question = Question::where([
