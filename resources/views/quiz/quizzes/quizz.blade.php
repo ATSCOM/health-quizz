@@ -14,7 +14,7 @@
                     <input type="text" id="step" name="step" readonly value="{{ is_null($response) ? '0' : '1' }}" hidden>
 
                     @csrf
-                    @include('quiz.template.quizz', ['question' => $question['descriptions'], 'options' => $question['options'], 'response' => $response,'image' => $question['image']])
+                    @include('quiz.template.quizz', ['question' => $question['descriptions'], 'options' => $question['options'], 'response' => $response, 'image' => $question['image']])
                     <input type="hidden" name="cantQuestions" value='{{ $cants }}'>
                     <input type="hidden" name="successfulQ" value='{{ $successfulQ }}'>
                     <input type="hidden" name="endIdQuestion" value="{{ $endIdQuestion }}">

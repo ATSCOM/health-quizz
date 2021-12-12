@@ -13,14 +13,11 @@
         @endforeach
 
         @if(!is_null($response))
-        <div class="alert alert-{{ $response['right'] ? 'success' : 'danger' }} d-flex align-items-center" role="alert">
+        <div class="form-floating mt-3 alert alert-{{ $response['right'] ? 'success' : 'danger' }} d-flex align-items-center" role="alert">
             <i class="bi bi-{{ $response['right'] ? 'check' : 'x' }}-circle"></i>
             <div>
                 {{ $response['message'] }}
             </div>
-        </div>
-        <div class="form-floating mt-3">
-            <textarea class="form-control" placeholder="Justifique su respuesta" id="floatingTextarea" readonly>{{ is_null($response) ? '' : $response }}</textarea>
         </div>
         @endif
     </div>
