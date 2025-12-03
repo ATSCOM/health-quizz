@@ -10,19 +10,19 @@ $options = array(
 );
 $context = stream_context_create($options);
 $uri = "http://$HOST/health/getItemsSideBar.php";
-$categories = json_decode(file_get_contents($uri, true, $context), true,);
+$categories = json_decode(file_get_contents($uri, true, $context), true);
 $items = [
   // Navbar items:
   [
-    'type'         => 'navbar-search',
-    'text'         => 'find an cuestion',
+    'type' => 'navbar-search',
+    'text' => 'find an cuestion',
     'topnav_right' => true,
   ],
   // Sidebar items:
   ['header' => 'General'],
   [
     'text' => 'Resources',
-    'url'  => 'assets',
+    'url' => 'assets',
     'icon' => 'fas fa-sd-card',
   ]
 ];

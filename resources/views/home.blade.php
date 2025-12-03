@@ -4,9 +4,9 @@
 
 @section('content')
     @csrf
-    @if(!Auth::user())
+    @if (!Auth::user())
         @foreach ($values as $val)
-            <h5 class="font-weight-bold">{{ $val->description }}</h5>
+            <h5 class="font-weight-bold">{{ $val->description ?? '' }}</h5>
             <div class="card-group">
                 @include('layouts.suggestion')
             </div>
