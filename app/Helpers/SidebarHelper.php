@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Models\Category;
-use Illuminate\Support\Facades\Schema;
 
 class SidebarHelper
 {
@@ -33,19 +32,16 @@ class SidebarHelper
         // Agregar header de categorías
         $items[] = ['header' => 'Categorias'];
 
-        // Obtener categorías de la base de datos solo si la conexión está disponible
+        // Obtener categorías de la base de datos
         try {
-            // Verificar si la aplicación está booteada y la tabla existe
-            if (app()->bound('db') && Schema::hasTable('categories')) {
-                $categories = Category::all();
-                
-                foreach ($categories as $category) {
-                    $items[] = [
-                        'text' => $category->description,
-                        'url'  => 'issues/' . $category->id,
-                        'icon' => 'fa fa-book-medical',
-                    ];
-                }
+            $categories = Category::all();
+            
+            foreach ($categories as $category) {
+                $items[] = [
+                    'text' => $category->description,
+                    'url'  => 'issues/' . $category->id,
+                    'icon' => 'fa fa-book-medical',
+                ];
             }
         } catch (\Exception $e) {
             // Si hay error de conexión, retornar items sin categorías

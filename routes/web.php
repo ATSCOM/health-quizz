@@ -17,7 +17,7 @@ Route::post('/', [QuizController::class, 'showHome']);
 //Window of home
 Route::get('home', [QuizController::class, 'showHome']);
 //for users
-Route::get('register', [UserController::class, 'registerIndex'])->middleware('auth');
+Route::get('register', [UserController::class, 'registerIndex']);
 Route::post('register', [UserController::class, 'crearStore']);
 //Con middleware controlamos que sin un inicio de sesion esta pantalla no pueda crear ningun usuario
 Route::get('login', [UserController::class, 'loginIndex'])->name('login');

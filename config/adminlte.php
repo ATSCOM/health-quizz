@@ -1,10 +1,5 @@
 <?php
 
-use App\Helpers\SidebarHelper;
-
-// Obtener items del menú usando el helper (sin llamada HTTP externa)
-$items = SidebarHelper::getMenuItems();
-
 return [
 
   /*
@@ -229,7 +224,22 @@ return [
   |
   */
 
-  'menu' => $items,
+  'menu' => [
+        // Navbar items:
+        [
+            'type' => 'navbar-search',
+            'text' => 'find an cuestion',
+            'topnav_right' => true,
+        ],
+        // Sidebar items:
+        ['header' => 'General'],
+        [
+            'text' => 'Resources',
+            'url' => 'assets',
+            'icon' => 'fas fa-sd-card',
+        ],
+        // Las categorías se agregan dinámicamente desde AppServiceProvider
+    ],
 
   /*
   |--------------------------------------------------------------------------

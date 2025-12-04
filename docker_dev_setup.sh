@@ -301,10 +301,18 @@ run_migrations() {
 run_seeders() {
     print_header "Ejecutando seeders"
     
+    # Obtener credenciales del .env
+    DB_USER=$(grep DB_USERNAME .env | cut -d '=' -f2)
+    DB_PASS=$(grep DB_PASSWORD .env | cut -d '=' -f2)
+    DB_NAME=$(grep DB_DATABASE .env | cut -d '=' -f2)
+    
+    # Ejecutar el archivo SQL directamente (más confiable que el seeder de Laravel)
+    print_warning "Ejecutando Document.sql con datos iniciales..."
+    
     if docker compose version &> /dev/null; then
-        docker compose exec -T app php artisan db:seed --force
+        docker compose exec -T mysql mysql -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" < database/seeders/Document.sql 2>/dev/null
     else
-        docker-compose exec -T app php artisan db:seed --force
+        docker-compose exec -T mysql mysql -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" < database/seeders/Document.sql 2>/dev/null
     fi
     
     print_success "Seeders ejecutados"
