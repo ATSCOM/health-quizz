@@ -1,0 +1,82 @@
+services:
+  # Aplicación Laravel
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: health_quizz_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    user: "1000:1000"
+    volumes:
+      - .:/var/www/html
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    ports:
+      - "8005:8000"
+    networks:
+      - health_quizz_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=${DB_DATABASE:-health_quizz}
+      - DB_USERNAME=${DB_USERNAME:-health_user}
+      - DB_PASSWORD=${DB_PASSWORD:-secret}
+    # Mantener el contenedor corriendo para ejecutar comandos manualmente
+    command: tail -f /dev/null
+
+  # Base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: health_quizz_mysql
+    restart: unless-stopped
+    platform: linux/amd64
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-health_quizz}
+      MYSQL_USER: ${DB_USERNAME:-health_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-rootsecret}
+    ports:
+      - "33061:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - health_quizz_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: health_quizz_phpmyadmin
+    restart: unless-stopped
+    platform: linux/amd64
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ${DB_USERNAME:-health_user}
+      PMA_PASSWORD: ${DB_PASSWORD:-secret}
+      UPLOAD_LIMIT: 100M
+    ports:
+      - "8006:80"
+    networks:
+      - health_quizz_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+networks:
+  health_quizz_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

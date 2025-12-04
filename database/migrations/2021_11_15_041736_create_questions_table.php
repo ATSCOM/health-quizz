@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->text('descriptions');
             $table->text('justify');
-            $table->text('image')->nullable()->default('NULL');
+            $table->text('image')->nullable();
             $table->foreignId('quiz_id')->constrained('quizzes')->cascadeOnDelete();
         });
     }
